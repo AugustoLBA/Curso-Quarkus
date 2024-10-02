@@ -3,7 +3,8 @@ package io.github.augustolba.quarkussocial.domain.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,5 +19,6 @@ public class User {
     private String name;
     @Column(name = "idade")
     private Integer age;
+
 
 }
