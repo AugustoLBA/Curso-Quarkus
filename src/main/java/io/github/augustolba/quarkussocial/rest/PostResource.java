@@ -52,15 +52,12 @@ public class PostResource {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
     @GET
-    public Response listPosts(@PathParam("userId") Long userId,
-                              @HeaderParam("followerId")Long followerId){
+    public Response listPosts(@PathParam("userId") Long userId, @HeaderParam("followerId")Long followerId){
 
         User user = userRepository.findById(userId);
         if(user != null){
-           var query = postRepository.find("user",
-                   Sort.by("dateTime", Sort.Direction.Descending),user);
+           var query = postRepository.find("user", Sort.by("dateTime", Sort.Direction.Descending),user);
            var list = query.list();
-
 
            if(followerId == null){
                return Response.status(Response.Status.BAD_REQUEST).entity("You forgot the header followerId").build();
